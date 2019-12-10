@@ -397,42 +397,60 @@ def db_map(university):
     item = cur.fetchone()
     return item
     cur.close()
-# your code goes here
+
 app = Flask(__name__)
 @app.route('/nearbycafe/<university>')
 def nearby(university):
-    headlines=getdata(university,'caf\u00e9')
-    return render_template('nearby.html', university=university, headlines=headlines)
+    try:
+        headlines=getdata(university,'caf\u00e9')
+        return render_template('nearby.html', university=university, headlines=headlines)
+    except:
+        return render_template('error.html')
 
 @app.route('/universitylist/<order>')
 def list(order):
-    headlines = db_list(order)
-    return render_template('name.html', headlines = headlines)
+    try:
+        headlines = db_list(order)
+        return render_template('name.html', headlines = headlines)
+    except:
+        return render_template('error.html')
 
 @app.route('/score')
 def score():
-    headline = db_score()
-    headlines = {}
-    for i in range(len(headline)):
-        headlines[i] =(headline[i][0],round(int(headline[i][1])),headline[i][2])
-    return render_template('score.html', headlines = headlines)
+    try:
+        headline = db_score()
+        headlines = {}
+        for i in range(len(headline)):
+            headlines[i] =(headline[i][0],round(int(headline[i][1])),headline[i][2])
+        return render_template('score.html', headlines = headlines)
+    except:
+        return render_template('error.html')
 
 @app.route('/universityrankings/<order>')
 def rank(order):
-    headlines = db_rank(order)
-    return render_template('rank.html', headlines = headlines)
+    try:
+        headlines = db_rank(order)
+        return render_template('rank.html', headlines = headlines)
+    except:
+        return render_template('error.html')
 
 @app.route('/website/<university>')
 def website(university):
-    link = db_website(university)
-    link2 = 'https://'+str(link)[2:-3]
-    return render_template('website.html', headlines = link2, university=university)
+    try:
+        link = db_website(university)
+        link2 = 'https://'+str(link)[2:-3]
+        return render_template('website.html', headlines = link2, university=university)
+    except:
+        return render_template('error.html')
 
 @app.route('/map/<university>')
 def map(university):
-    geoinfo = db_map(university)
-    link2 = 'https://www.google.com/maps/place/'+str(geoinfo)
-    return render_template('map.html', headlines = link2)
+    try:
+        geoinfo = db_map(university)
+        link2 = 'https://www.google.com/maps/place/'+str(geoinfo)
+        return render_template('map.html', headlines = link2)
+    except:
+        return render_template('error.html')
 
 if __name__=="__main__":
     app.run(debug=True)
