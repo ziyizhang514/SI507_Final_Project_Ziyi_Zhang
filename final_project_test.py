@@ -68,7 +68,7 @@ class TestDatabase(unittest.TestCase):
 class TestDataSearch(unittest.TestCase):
 
     def test_db_list(self):
-        results = db_list('university')
+        results = db_list('name')
         self.assertEqual(results[0][0], 'abraham baldwin agricultural college (abac)')
 
         results = db_list('established')
@@ -98,7 +98,7 @@ class TestVenues(unittest.TestCase):
         results = getdata('University of Michigan','hill')
         self.assertEqual(results[0]['id'], '4f104fcce4b019e98fe6c12a')
 
-        results = getdata('Chicago','cafe')
+        results = getdata('Chicago','caf\u00e9')
         self.assertEqual(results[0]['venue'], 'Lula Café')
 
 unittest.main()

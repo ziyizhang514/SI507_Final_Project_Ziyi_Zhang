@@ -436,12 +436,13 @@ def rank(order):
 
 @app.route('/website/<university>')
 def website(university):
-    try:
-        link = db_website(university)
-        link2 = 'https://'+str(link)[2:-3]
+    link = db_website(university)
+    link2 = 'https://'+str(link)[2:-3]
+    if link != None:
         return render_template('website.html', headlines = link2, university=university)
-    except:
+    else:
         return render_template('error.html')
+
 
 @app.route('/map/<university>')
 def map(university):
