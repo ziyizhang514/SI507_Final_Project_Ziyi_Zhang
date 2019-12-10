@@ -18,12 +18,12 @@ SI507 Final Project
   CSV of 1000 records downloaded from topuniversities.com
 
 
-### Information about create cache files/database
+## Information about create cache files/database
 
 Write code 'createbdall()' into the py file, then the database will be dropped and rebuilt
 
 
-### Project Structure
+## Project Structure
 
 1. The project gets data from wikipedia and a specific csv and saved raw results in cache files
 2. Use function 'createbdall' to call all related functions needed for building the database
@@ -31,7 +31,7 @@ Write code 'createbdall()' into the py file, then the database will be dropped a
 4. Use Flask names 'app' to give visual output to user
 
 
-### User Guide (After running the py file)
+## User Guide (After running the py file)
 
 1. Find cafes near specific university:
   e.g. input in explorer: "127.0.0.1:5000/nearbycafe/University of Michigan"
