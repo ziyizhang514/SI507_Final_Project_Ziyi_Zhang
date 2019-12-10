@@ -20,7 +20,9 @@ SI507 Final Project
 
 ## Information about create cache files/database
 
-Write code 'createbdall()' into the py file, then the database will be dropped and rebuilt
+Please unzip the cache_file.zip and move inside files into the same route of py file
+
+In py file, write code 'createbdall()', then the database will be dropped and rebuilt
 
 
 ## Project Structure
